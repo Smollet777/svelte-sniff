@@ -1,6 +1,9 @@
 <script>
   import { createEventDispatcher } from "svelte";
 
+  import { fade, fly } from "svelte/transition";
+  import { sineIn } from "svelte/easing";
+
   const dispatch = createEventDispatcher();
 
   export let name;
@@ -14,6 +17,19 @@
   const onDelete = () => {
     dispatch("deleteplayer", name);
   };
+
+  function customFade(node, { duration }) {
+    return {
+      duration,
+      css: t => {
+        const eased = sineIn(t);
+
+        return `
+					opacity:${eased};
+				`;
+      }
+    };
+  }
 </script>
 
 <style>
@@ -22,7 +38,11 @@
   }
 </style>
 
-<div class="card">
+<div
+  class="card"
+  out:fade
+  in:customFade={{ duration: 1000 }}
+  on:outrostart={e => (e.target.innerText = 'deleting...')}>
   <h2>
     {name}
     <button class="btn btn-sm" on:click={toggleControls}>
