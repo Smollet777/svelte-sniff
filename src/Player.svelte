@@ -6,16 +6,15 @@
 
   const dispatch = createEventDispatcher();
 
-  export let name;
-  export let points;
+  export let player;
   let showControls = false;
 
   const toggleControls = () => (showControls = !showControls);
-  const increment = () => points++;
-  const decrement = () => points--;
+  const increment = () => player.points++;
+  const decrement = () => player.points--;
 
   const onDelete = () => {
-    dispatch("deleteplayer", name);
+    dispatch("deleteplayer", player);
   };
 
   function customFade(node, { duration }) {
@@ -44,16 +43,16 @@
   in:customFade={{ duration: 1000 }}
   on:outrostart={e => (e.target.innerText = 'deleting...')}>
   <h2>
-    {name}
+    {player.name}
     <button class="btn btn-sm" on:click={toggleControls}>
       {#if showControls}^{:else}v{/if}
     </button>
     <button class="btn btn-danger btn-sm" on:click={onDelete}>x</button>
   </h2>
-  <h3>Points: {points}</h3>
+  <h3>Points: {player.points}</h3>
   {#if showControls}
     <button class="btn" on:click={increment}>+1</button>
     <button class="btn btn-dark" on:click={decrement}>-1</button>
-    <input type="number" bind:value={points} />
+    <input type="number" bind:value={player.points} />
   {/if}
 </div>

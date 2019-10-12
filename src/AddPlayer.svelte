@@ -4,14 +4,15 @@
   const dispatch = createEventDispatcher();
 
   const defaultPlayer = { name: "", points: 0 };
-  let player = defaultPlayer;
+  let player = { ...defaultPlayer };
 
   const onSubmit = e => {
     e.preventDefault();
 
+    player.id = +new Date();
     dispatch("addplayer", player);
 
-    player = defaultPlayer;
+    player = { ...defaultPlayer };
   };
 </script>
 
