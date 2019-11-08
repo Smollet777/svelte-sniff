@@ -10,4 +10,5 @@
   <h1>Svelte SPA</h1>
   <Link href="/">scoreboard</Link>
   <Link href="/todo">todo</Link>
+  <Link href="/genders">add another gender</Link>
 </div>
