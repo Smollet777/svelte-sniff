@@ -3,7 +3,8 @@
 
   const dispatch = createEventDispatcher();
 
-  const defaultPlayer = { name: "", points: 0 };
+  const genders = ["not sure", "male", "female", "both"];
+  const defaultPlayer = { name: "", points: 0, gender: genders[0] };
   let player = { ...defaultPlayer };
 
   const onSubmit = e => {
@@ -19,7 +20,7 @@
 <style>
   form {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
   }
 </style>
@@ -31,5 +32,10 @@
     placeholder="Player name"
     required />
   <input type="number" bind:value={player.points} />
+  <select size="1" title="gender" bind:value={player.gender}>
+    {#each genders as gender}
+      <option value={gender}>{gender}</option>
+    {/each}
+  </select>
   <input type="submit" class="btn btn-primary" value="Add Player" />
 </form>

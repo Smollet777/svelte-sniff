@@ -8,13 +8,16 @@
   let fetching = true;
 
   onMount(async function() {
+    const getGenderForBot = str => (str.length % 2 ? "male" : "female");
+
     await fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
       .then(json => {
         players = json.map(({ id, name, email }) => ({
           id,
           name,
-          points: email.length
+          points: email.length,
+          gender: getGenderForBot(email)
         }));
       })
       .finally(_ => (fetching = !fetching))

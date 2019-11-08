@@ -49,6 +49,7 @@
     </button>
     <button class="btn btn-danger btn-sm" on:click={onDelete}>x</button>
   </h2>
+  gender: {player.gender}
   <h3>Points: {player.points}</h3>
   {#if showControls}
     <button class="btn" on:click={increment}>+1</button>
