@@ -1,0 +1,39 @@
+<script>
+  import { onDestroy } from "svelte";
+
+  import { genders } from "../stores.js";
+
+  let newGender = "";
+  let gendersStr = "";
+
+  const unsubscribe = genders.subscribe(value => {
+    gendersStr = value.toString();
+  });
+
+  function onSubmit(e) {
+    e.preventDefault();
+
+    //отдельно 'set' и 'add' для наглядности "кастомности" stores
+
+    if ($genders.toString() !== gendersStr) {
+      genders.set(gendersStr.split(","));
+    }
+    if (newGender.length) {
+      genders.add(newGender);
+      newGender = "";
+    }
+  }
+
+  onDestroy(unsubscribe);
+</script>
+
+<form on:submit={onSubmit}>
+  <p>Add another gender</p>
+  <input type="text" placeholder="Another gender" bind:value={newGender} />
+  <p>and/or replace existing</p>
+  <input type="text" placeholder="..." bind:value={gendersStr} />
+  <input type="submit" class="btn btn-primary" value="Add" />
+  {#each $genders as gender}
+    <p>{gender}</p>
+  {/each}
+</form>
