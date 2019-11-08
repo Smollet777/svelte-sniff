@@ -1,9 +1,10 @@
 <script>
   import { createEventDispatcher } from "svelte";
 
+  import { genders } from "./stores.js";
+
   const dispatch = createEventDispatcher();
 
-  const genders = ["not sure", "male", "female", "both"];
   const defaultPlayer = { name: "", points: 0, gender: genders[0] };
   let player = { ...defaultPlayer };
 
@@ -33,7 +34,7 @@
     required />
   <input type="number" bind:value={player.points} />
   <select size="1" title="gender" bind:value={player.gender}>
-    {#each genders as gender}
+    {#each $genders as gender}
       <option value={gender}>{gender}</option>
     {/each}
   </select>
