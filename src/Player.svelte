@@ -3,15 +3,19 @@
 
   import { fade, fly } from "svelte/transition";
   import { sineIn } from "svelte/easing";
+  import { tweened } from "svelte/motion";
 
   const dispatch = createEventDispatcher();
+  const points = tweened(0, {
+    duration: 1000
+  });
 
   export let player;
   let showControls = false;
 
   const toggleControls = () => (showControls = !showControls);
-  const increment = () => player.points++;
-  const decrement = () => player.points--;
+  const increment = () => points.update(n => n + 1);
+  const decrement = () => points.update(n => n - 1);
 
   const onDelete = () => {
     dispatch("deleteplayer", player);
@@ -41,6 +45,7 @@
   class="card"
   out:fade
   in:customFade={{ duration: 1000 }}
+  on:introend={points.set(player.points)}
   on:outrostart={e => (e.target.innerText = 'deleting...')}>
   <h2>
     {player.name}
@@ -50,10 +55,13 @@
     <button class="btn btn-danger btn-sm" on:click={onDelete}>x</button>
   </h2>
   gender: {player.gender}
-  <h3>Points: {player.points}</h3>
+  <h3>Points: {$points}</h3>
   {#if showControls}
     <button class="btn" on:click={increment}>+1</button>
     <button class="btn btn-dark" on:click={decrement}>-1</button>
-    <input type="number" bind:value={player.points} />
+    <input
+      type="number"
+      on:change={e => points.set(+e.target.value)}
+      value={$points} />
   {/if}
 </div>
