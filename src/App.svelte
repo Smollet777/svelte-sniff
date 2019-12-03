@@ -12,6 +12,14 @@
 
 </style>
 
+<svelte:head>
+  <script
+    src="https://kit.fontawesome.com/ce015ae463.js"
+    crossorigin="anonymous">
+
+  </script>
+</svelte:head>
+
 <Navbar />
 <div class="container">
   <Router>
