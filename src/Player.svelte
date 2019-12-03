@@ -39,6 +39,9 @@
   h3 {
     margin-bottom: 10px;
   }
+  .active {
+    color: var(--primary-color);
+  }
 </style>
 
 <div
@@ -47,7 +50,8 @@
   in:customFade={{ duration: 1000 }}
   on:introend={points.set(player.points)}
   on:outrostart={e => (e.target.innerText = 'deleting...')}>
-  <h2>
+
+  <h2 class:active={showControls}>
     {player.name}
     <button class="btn btn-sm" on:click={toggleControls} title="show/hide info">
       {#if showControls}
@@ -73,4 +77,5 @@
       on:change={e => points.set(+e.target.value)}
       value={$points} />
   {/if}
+
 </div>
