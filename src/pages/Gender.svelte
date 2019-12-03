@@ -12,9 +12,7 @@
     });
   });
 
-  function onSubmit(e) {
-    e.preventDefault();
-
+  function onSubmit() {
     //отдельно 'set' и 'add' для наглядности "кастомности" stores
 
     if ($genders.toString() !== gendersStr) {
@@ -27,7 +25,7 @@
   }
 </script>
 
-<form on:submit={onSubmit}>
+<form on:submit|preventDefault={onSubmit}>
   <p>Add another gender</p>
   <input type="text" placeholder="Another gender" bind:value={newGender} />
   <p>and/or replace existing</p>
