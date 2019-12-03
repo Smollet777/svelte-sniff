@@ -8,9 +8,7 @@
   const defaultPlayer = { name: "", points: 0, gender: genders[0] };
   let player = { ...defaultPlayer };
 
-  const onSubmit = e => {
-    e.preventDefault();
-
+  const onSubmit = () => {
     player.id = +new Date();
     dispatch("addplayer", player);
 
@@ -26,7 +24,7 @@
   }
 </style>
 
-<form on:submit={onSubmit}>
+<form on:submit|preventDefault={onSubmit}>
   <input
     type="text"
     bind:value={player.name}
