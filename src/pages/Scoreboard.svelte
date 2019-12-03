@@ -44,7 +44,7 @@
 {:else if !players.length}
   There is no players.
 {:else}
-  {#each players as player}
+  {#each players as player (player)}
     <Player {player} on:deleteplayer={deletePlayer} />
   {/each}
 {/if}
