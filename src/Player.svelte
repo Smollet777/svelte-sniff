@@ -49,10 +49,19 @@
   on:outrostart={e => (e.target.innerText = 'deleting...')}>
   <h2>
     {player.name}
-    <button class="btn btn-sm" on:click={toggleControls}>
-      {#if showControls}^{:else}v{/if}
+    <button class="btn btn-sm" on:click={toggleControls} title="show/hide info">
+      {#if showControls}
+        <i class="fas fa-caret-down" aria-label="hide user info" />
+      {:else}
+        <i class="fas fa-caret-up" aria-label="show user info" />
+      {/if}
     </button>
-    <button class="btn btn-danger btn-sm" on:click={onDelete}>x</button>
+    <button
+      class="btn btn-danger btn-sm"
+      on:click={onDelete}
+      title="delete user">
+      <i class="fas fa-user-times" aria-label="delete user" />
+    </button>
   </h2>
   gender: {player.gender}
   <h3>Points: {$points}</h3>

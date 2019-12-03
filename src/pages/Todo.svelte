@@ -119,7 +119,9 @@
       animate:flip>
       <input type="checkbox" bind:checked={todo.completed} />
       {todo.title}
-      <button on:click={() => remove(todo)}>x</button>
+      <button on:click={() => remove(todo)} title="remove">
+        <i class="fas fa-times" aria-label="remove uncompleted" />
+      </button>
     </label>
   {/each}
 </div>
@@ -133,7 +135,9 @@
       animate:flip>
       <input type="checkbox" bind:checked={todo.completed} />
       {todo.title}
-      <button on:click={() => remove(todo)}>x</button>
+      <button on:click={() => remove(todo)} title="remove">
+        <i class="fas fa-times" aria-label="remove completed" />
+      </button>
     </label>
   {/each}
 </div>
