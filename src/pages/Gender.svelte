@@ -23,6 +23,8 @@
       newGender = "";
     }
   }
+
+  onDestroy(unsubscribe);
 </script>
 
 <form on:submit|preventDefault={onSubmit}>
