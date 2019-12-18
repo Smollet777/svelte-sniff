@@ -67,19 +67,24 @@
   class="new-todo"
   placeholder="what needs to be done?"
   on:keydown={event => event.which === 13 && add(event.target)} />
+
 <div class="left">
   <SuperList
+    let:amount
     items={todos.filter(itm => !itm.completed)}
     on:completion={TodoCompletion}
     on:delete={deleteTodo}>
     <h2 slot="title">Todo</h2>
+    <div slot="amount">({amount})</div>
   </SuperList>
 </div>
 <div class="right">
   <SuperList
+    let:amount
     items={todos.filter(itm => itm.completed)}
     on:completion={TodoCompletion}
     on:delete={deleteTodo}>
     <h2 slot="title">Completed</h2>
+    <div slot="amount">({amount})</div>
   </SuperList>
 </div>
