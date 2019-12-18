@@ -68,7 +68,7 @@
     items={todos.filter(itm => !itm.completed)}
     on:completion={TodoCompletion}
     on:delete={deleteTodo}>
-    <h2>Todo</h2>
+    <h2 slot="title">Todo</h2>
   </SuperList>
 </div>
 <div class="right">
@@ -76,6 +76,6 @@
     items={todos.filter(itm => itm.completed)}
     on:completion={TodoCompletion}
     on:delete={deleteTodo}>
-    <h2>Completed</h2>
+    <h2 slot="title">Completed</h2>
   </SuperList>
 </div>

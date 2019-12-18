@@ -64,7 +64,7 @@
   }
 </style>
 
-<slot />
+<slot name="title" />
 {#each items as item (item.id)}
   <label in:receive={{ key: item.id }} out:send={{ key: item.id }} animate:flip>
     <input
