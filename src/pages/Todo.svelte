@@ -7,6 +7,10 @@
 
   import SuperList from "../SuperList.svelte";
 
+  $: if (todos.length > 0) {
+    console.log(`todos are popping`);
+  }
+
   let todos = [];
 
   onMount(async function() {

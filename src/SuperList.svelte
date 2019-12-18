@@ -7,6 +7,8 @@
 
   export let items;
 
+  $: amount = items.length;
+
   const dispatch = createEventDispatcher();
   function completion(item) {
     dispatch("completion", item);
@@ -65,6 +67,7 @@
 </style>
 
 <slot name="title" />
+({amount})
 {#each items as item (item.id)}
   <label in:receive={{ key: item.id }} out:send={{ key: item.id }} animate:flip>
     <input
