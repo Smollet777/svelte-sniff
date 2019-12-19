@@ -46,7 +46,7 @@
 
 <div
   class="card"
-  out:fade
+  out:fade|local
   in:customFade={{ duration: 1000 }}
   on:introend={points.set(player.points)}
   on:outrostart={e => (e.target.innerText = 'deleting...')}>
