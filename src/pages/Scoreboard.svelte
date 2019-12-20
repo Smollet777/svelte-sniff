@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import Player from "../Player.svelte";
+  import PlayerList from "../PlayerList.svelte";
   import AddPlayer from "../AddPlayer.svelte";
 
   let players = [];
@@ -41,11 +41,7 @@
 
 {#if fetching}
   Fetching data...
-{:else if !players.length}
-  There is no players.
 {:else}
-  {#each players as player (player)}
-    <Player {player} on:deleteplayer={deletePlayer} />
-  {/each}
+  <PlayerList {players} on:deleteplayer={deletePlayer} />
 {/if}
 <AddPlayer on:addplayer={addPlayer} />
