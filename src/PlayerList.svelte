@@ -12,6 +12,6 @@
   There is no players.
 {:else}
   {#each players as player (player)}
-    <Player {player} on:deleteplayer />
+    <svelte:component this={Player} {player} on:deleteplayer />
   {/each}
 {/if}
