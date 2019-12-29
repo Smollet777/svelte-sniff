@@ -48,6 +48,10 @@
     padding: 0 1em 0 0;
     box-sizing: border-box;
   }
+  h2,
+  div[slot] {
+    display: inline;
+  }
   h2 {
     font-size: 2em;
     font-weight: 200;

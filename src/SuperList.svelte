@@ -36,8 +36,7 @@
 
 <style>
   label {
-    top: 0;
-    left: 0;
+    position: relative;
     display: block;
     font-size: 1em;
     line-height: 1;
@@ -49,7 +48,10 @@
   }
 
   button {
-    float: right;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
     height: 1em;
     box-sizing: border-box;
     padding: 0 0.5em;
@@ -67,7 +69,7 @@
 </style>
 
 <slot name="title" />
-<slot name="amount" {amount}/>
+<slot name="amount" {amount} />
 {#each items as item (item.id)}
   <label in:receive={{ key: item.id }} out:send={{ key: item.id }} animate:flip>
     <input

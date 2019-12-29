@@ -22,6 +22,10 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
   }
+
+  form > * {
+    align-self: center;
+  }
 </style>
 
 <form on:submit|preventDefault={onSubmit}>
